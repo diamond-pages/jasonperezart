@@ -4,23 +4,22 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--ink)] border-t border-[var(--stone)]/10">
-      <div className="container-xl px-6 lg:px-12 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+    <footer className="bg-[var(--ink)] text-white">
+      <div className="section-content px-6 md:px-12 lg:px-20 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
-          <div className="md:col-span-5">
-            <Link href="/" className="font-display text-2xl text-[var(--paper)] hover:text-[var(--terracotta)] transition-colors">
+          <div>
+            <Link href="/" className="font-display text-3xl">
               Jason Perez
             </Link>
-            <p className="text-[var(--text-base)] text-[var(--stone)] mt-4 max-w-sm">
-              Creating murals and fine art that transform spaces and tell stories. 
-              Based in Miami, available worldwide.
+            <p className="text-white/60 mt-4 max-w-xs">
+              Miami-based muralist and fine artist transforming spaces through art.
             </p>
           </div>
 
           {/* Navigation */}
-          <div className="md:col-span-3">
-            <p className="text-[var(--text-xs)] tracking-[0.2em] uppercase text-[var(--stone)] mb-4">
+          <div>
+            <p className="text-sm text-white/40 uppercase tracking-wider mb-4">
               Navigation
             </p>
             <nav className="space-y-3">
@@ -28,7 +27,7 @@ export default function Footer() {
                 <Link
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="block text-[var(--paper)]/70 hover:text-[var(--paper)] transition-colors"
+                  className="block text-white/70 hover:text-white transition-colors"
                 >
                   {item}
                 </Link>
@@ -37,25 +36,25 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="md:col-span-4">
-            <p className="text-[var(--text-xs)] tracking-[0.2em] uppercase text-[var(--stone)] mb-4">
-              Contact
+          <div>
+            <p className="text-sm text-white/40 uppercase tracking-wider mb-4">
+              Get in Touch
             </p>
             <div className="space-y-3">
               <a
                 href="mailto:hello@jasonperezart.com"
-                className="block text-[var(--paper)]/70 hover:text-[var(--terracotta)] transition-colors"
+                className="block text-white/70 hover:text-[var(--accent)] transition-colors"
               >
                 hello@jasonperezart.com
               </a>
-              <p className="text-[var(--paper)]/70">Miami, Florida</p>
+              <p className="text-white/70">Miami, Florida</p>
             </div>
             <div className="flex gap-4 mt-6">
-              {['Instagram', 'Behance', 'LinkedIn'].map((social) => (
+              {['Instagram', 'Behance'].map((social) => (
                 <a
                   key={social}
                   href="#"
-                  className="text-[var(--text-sm)] text-[var(--stone)] hover:text-[var(--terracotta)] transition-colors"
+                  className="text-sm text-white/50 hover:text-[var(--accent)] transition-colors"
                 >
                   {social}
                 </a>
@@ -65,12 +64,15 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-16 pt-8 border-t border-[var(--stone)]/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[var(--text-sm)] text-[var(--stone)]">
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-white/40">
             © {new Date().getFullYear()} Jason Perez Art. All rights reserved.
           </p>
-          <p className="text-[var(--text-sm)] text-[var(--stone)]">
-            Site by <a href="#" className="hover:text-[var(--terracotta)] transition-colors">DiamondPages</a>
+          <p className="text-sm text-white/40">
+            Site by{' '}
+            <a href="#" className="hover:text-[var(--accent)] transition-colors">
+              DiamondPages
+            </a>
           </p>
         </div>
       </div>

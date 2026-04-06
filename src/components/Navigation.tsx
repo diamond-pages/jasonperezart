@@ -15,7 +15,7 @@ export default function Navigation() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 100);
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -23,28 +23,34 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[var(--ink)]/90 backdrop-blur-sm py-4'
-            : 'bg-transparent py-6 lg:py-8'
+            ? 'bg-white/95 backdrop-blur-sm py-4 shadow-sm'
+            : 'bg-transparent py-6'
         }`}
       >
-        <div className="container-xl px-6 lg:px-12 flex items-center justify-between">
+        <div className="flex items-center justify-between px-6 md:px-12 lg:px-20">
           {/* Logo */}
-          <Link 
-            href="/" 
-            className="font-display text-xl lg:text-2xl tracking-tight hover:text-[var(--terracotta)] transition-colors"
+          <Link
+            href="/"
+            className={`font-display text-2xl transition-colors ${
+              isScrolled ? 'text-[var(--ink)]' : 'text-white'
+            }`}
           >
             Jason Perez
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm tracking-[0.15em] uppercase text-[var(--paper)]/70 hover:text-[var(--paper)] transition-colors link-underline"
+                className={`text-sm tracking-wider uppercase transition-colors link-hover ${
+                  isScrolled
+                    ? 'text-[var(--ink)] hover:text-[var(--accent)]'
+                    : 'text-white/90 hover:text-white'
+                }`}
               >
                 {item.label}
               </Link>
@@ -58,13 +64,21 @@ export default function Navigation() {
             aria-label="Toggle menu"
           >
             <span
-              className={`w-6 h-px bg-[var(--paper)] transition-all duration-300 ${
-                isMobileOpen ? 'rotate-45 translate-y-1' : ''
+              className={`w-6 h-0.5 transition-all duration-300 ${
+                isMobileOpen
+                  ? 'rotate-45 translate-y-1 bg-[var(--ink)]'
+                  : isScrolled
+                  ? 'bg-[var(--ink)]'
+                  : 'bg-white'
               }`}
             />
             <span
-              className={`w-6 h-px bg-[var(--paper)] transition-all duration-300 ${
-                isMobileOpen ? '-rotate-45 -translate-y-0.5' : ''
+              className={`w-6 h-0.5 transition-all duration-300 ${
+                isMobileOpen
+                  ? '-rotate-45 -translate-y-1 bg-[var(--ink)]'
+                  : isScrolled
+                  ? 'bg-[var(--ink)]'
+                  : 'bg-white'
               }`}
             />
           </button>
@@ -73,18 +87,17 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-40 bg-[var(--ink)] transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 z-40 bg-white transition-all duration-500 md:hidden ${
           isMobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
       >
-        <div className="h-full flex flex-col justify-center items-center gap-8">
-          {navItems.map((item, i) => (
+        <div className="h-full flex flex-col justify-center items-center gap-8 pt-20">
+          {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setIsMobileOpen(false)}
-              className="font-display text-4xl text-[var(--paper)] hover:text-[var(--terracotta)] transition-colors"
-              style={{ animationDelay: `${i * 0.1}s` }}
+              className="font-display text-4xl text-[var(--ink)] hover:text-[var(--accent)] transition-colors"
             >
               {item.label}
             </Link>

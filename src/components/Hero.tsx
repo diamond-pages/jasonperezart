@@ -7,12 +7,11 @@ export default function Hero() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 100);
-    return () => clearTimeout(timer);
+    setLoaded(true);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-end pb-16 lg:pb-24 overflow-hidden">
+    <section className="relative h-screen min-h-[700px] w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -23,74 +22,68 @@ export default function Hero() {
           className="object-cover"
           sizes="100vw"
         />
-        {/* Gradient overlays for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-[var(--ink)]/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)]/60 via-transparent to-[var(--ink)]/40" />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container-xl px-6 lg:px-12 w-full">
-        <div className="max-w-4xl">
+      <div className="relative z-10 h-full flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-12 lg:px-20">
+        <div className="max-w-5xl">
           {/* Overline */}
           <p
-            className={`text-[var(--text-sm)] tracking-[0.3em] uppercase text-[var(--stone)] mb-6 transition-all duration-700 ${
+            className={`text-[var(--accent)] text-sm tracking-[0.3em] uppercase mb-6 transition-all duration-700 ${
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
-            Muralist &amp; Fine Artist — Miami, FL
+            Miami Muralist &amp; Fine Artist
           </p>
 
-          {/* Main headline */}
+          {/* Main Headline */}
           <h1
-            className={`font-display text-[var(--text-display)] text-[var(--paper)] mb-8 transition-all duration-1000 delay-200 ${
+            className={`font-display text-white text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-8 transition-all duration-1000 delay-200 ${
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            Art that
+            Transforming Spaces
             <br />
-            <em className="text-[var(--terracotta)]">transforms</em>
-            <br />
-            spaces
+            <span className="italic">Through Art</span>
           </h1>
 
           {/* Subtitle */}
           <p
-            className={`text-[var(--text-lg)] text-[var(--paper)]/70 max-w-lg leading-relaxed mb-10 transition-all duration-1000 delay-400 ${
+            className={`text-white/80 text-lg md:text-xl max-w-xl leading-relaxed mb-10 transition-all duration-1000 delay-400 ${
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            Large-scale murals and fine art that tell stories, 
-            evoke emotion, and create unforgettable environments.
+            Large-scale murals and fine art that tell stories, create atmosphere, 
+            and leave lasting impressions.
           </p>
 
-          {/* CTA */}
+          {/* CTAs */}
           <div
-            className={`flex flex-wrap gap-4 transition-all duration-1000 delay-600 ${
+            className={`flex flex-wrap gap-4 transition-all duration-1000 delay-500 ${
               loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <a href="#work" className="btn-primary">
-              View Work
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
+            <a href="#work" className="btn btn-light">
+              View Portfolio
             </a>
-            <a href="#contact" className="btn-outline">
-              Start a Project
+            <a href="#contact" className="btn btn-outline-light">
+              Get in Touch
             </a>
           </div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll Indicator */}
         <div
-          className={`absolute bottom-8 right-6 lg:right-12 hidden lg:flex flex-col items-center gap-3 transition-all duration-1000 delay-700 ${
+          className={`absolute bottom-8 right-6 md:right-12 lg:right-20 hidden md:flex flex-col items-center gap-2 transition-all duration-1000 delay-700 ${
             loaded ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <span className="text-xs tracking-[0.2em] uppercase text-[var(--stone)] [writing-mode:vertical-rl]">
+          <span className="text-white/60 text-xs tracking-widest uppercase [writing-mode:vertical-rl]">
             Scroll
           </span>
-          <div className="w-px h-16 bg-gradient-to-b from-[var(--stone)] to-transparent" />
+          <div className="w-px h-12 bg-gradient-to-b from-white/60 to-transparent" />
         </div>
       </div>
     </section>
