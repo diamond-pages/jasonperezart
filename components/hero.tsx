@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <Image
           src="https://static.wixstatic.com/media/868e3a_fd1ed7dc1bef4c30a59684eea6faa75e~mv2.jpg/v1/fill/w_1920,h_1280,al_c,q_85/868e3a_fd1ed7dc1bef4c30a59684eea6faa75e~mv2.jpg"
-          alt="Mural artwork by Jason Perez"
+          alt="Jason Perez Art Collective artwork"
           fill
           priority
           className="object-cover"
@@ -26,35 +26,36 @@ export default function Hero() {
           <div className="max-w-3xl">
             {/* Overline */}
             <p className="text-sm tracking-[0.3em] uppercase text-white/70 mb-6">
-              Miami Muralist &amp; Fine Artist
+              Art Brokerage — Miami &amp; New York
             </p>
 
             {/* Headline */}
             <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl text-white font-medium leading-[1.1] mb-6">
-              Transforming Spaces
+              Jason Perez
               <br />
-              <em className="italic text-zinc-300">Through Art</em>
+              <em className="italic text-zinc-300">Art Collective</em>
             </h1>
 
             {/* Subtitle */}
             <p className="text-xl text-white/80 max-w-xl leading-relaxed mb-10">
-              Large-scale murals and fine art that tell stories, create atmosphere, 
-              and leave lasting impressions.
+              A professional art brokerage representing over 40 talented artists. 
+              From pop art to contemporary — discover and collect exceptional works 
+              from across the United States.
             </p>
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4">
               <Link 
-                href="#work" 
+                href="#artists" 
                 className="btn text-zinc-900 bg-white hover:bg-zinc-100 shadow-lg"
               >
-                View Portfolio
+                View Artists
               </Link>
               <Link 
                 href="#contact" 
                 className="btn text-white bg-transparent border border-white/50 hover:bg-white/10"
               >
-                Get in Touch
+                Work With Us
               </Link>
             </div>
           </div>

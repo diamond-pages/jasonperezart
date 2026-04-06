@@ -29,21 +29,26 @@ export default function About() {
               About
             </p>
             <h2 className="font-playfair text-4xl md:text-5xl text-zinc-900 mb-8">
-              The Artist
+              The Gallerist
             </h2>
 
             <div className="space-y-6 text-lg text-zinc-600 leading-relaxed">
               <p>
-                Jason Perez is a Miami-based muralist and fine artist with over 
-                15 years of experience transforming spaces through art. His work 
-                combines bold color, intricate detail, and emotional depth to 
-                create pieces that resonate.
+                Born into the legacy of renowned pop artist <strong>Michael Perez</strong>, 
+                Jason&apos;s journey into the art world is deeply personal. After moving to Miami, 
+                they opened Gallery 212 in Wynwood. When his father suffered a stroke during 
+                their final year, Jason took on the challenge of continuing his work.
               </p>
               <p>
-                From the vibrant walls of Wynwood to corporate headquarters and 
-                private residences, Jason&apos;s murals have become landmarks across 
-                South Florida. Each project begins with understanding the space, 
-                the people, and the story that needs to be told.
+                With only $500 to his name, he learned the intricacies of the art business. 
+                Over five years of relentless dedication, he founded <strong>Jason Perez Art Collective</strong>. 
+                Today, they represent over 40 artists and collaborate with multiple galleries 
+                across Miami, hosting numerous art events throughout the year.
+              </p>
+              <p>
+                Distinguished by Art Basel accolades including the Spotlight Award at 2019 
+                Spectrum Miami, Best Sculpture at 2021 Art Expo New York, and Director&apos;s 
+                Awards at Red Dot Miami, Spectrum Miami, and Art Expo New York.
               </p>
             </div>
 
@@ -51,26 +56,26 @@ export default function About() {
             <div className="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-zinc-200">
               <div>
                 <div className="font-playfair text-4xl md:text-5xl text-zinc-900">
-                  <Counter number={15} />+
+                  <Counter number={40} />+
                 </div>
                 <p className="text-sm text-zinc-500 uppercase tracking-wider mt-1">
-                  Years
+                  Artists
                 </p>
               </div>
               <div>
                 <div className="font-playfair text-4xl md:text-5xl text-zinc-900">
-                  <Counter number={200} />+
+                  <Counter number={5} />+
                 </div>
                 <p className="text-sm text-zinc-500 uppercase tracking-wider mt-1">
-                  Projects
+                  Awards
                 </p>
               </div>
               <div>
                 <div className="font-playfair text-4xl md:text-5xl text-zinc-900">
-                  <Counter number={50} />+
+                  <Counter number={113} />K
                 </div>
                 <p className="text-sm text-zinc-500 uppercase tracking-wider mt-1">
-                  Murals
+                  Followers
                 </p>
               </div>
             </div>
@@ -79,7 +84,7 @@ export default function About() {
               href="#contact"
               className="inline-flex items-center gap-2 mt-10 text-zinc-900 border border-zinc-900 px-6 py-3 hover:bg-zinc-900 hover:text-white transition-colors"
             >
-              Work With Jason
+              Get in Touch
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

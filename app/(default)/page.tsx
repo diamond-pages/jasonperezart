@@ -1,23 +1,23 @@
 export const metadata = {
-  title: 'Jason Perez Art | Miami Muralist & Fine Artist',
-  description: 'Large-scale murals and fine art that transform spaces. Miami-based artist specializing in commercial, residential, and public installations.',
+  title: 'Jason Perez Art Collective | Miami & New York Art Brokerage',
+  description: 'Professional art brokerage representing over 40 talented artists. Pop art, street art, contemporary, and fine art. Based in Miami, FL & New York.',
 }
 
 import Hero from '@/components/hero'
-import Work from '@/components/work'
+import Artists from '@/components/artists'
+import Awards from '@/components/awards'
 import About from '@/components/about'
 import Services from '@/components/services'
-import TestimonialsCustom from '@/components/testimonials-custom'
 import Contact from '@/components/contact'
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Work />
+      <Artists />
+      <Awards />
       <About />
       <Services />
-      <TestimonialsCustom />
       <Contact />
     </>
   )

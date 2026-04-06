@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
 export default function Header() {
@@ -14,7 +15,7 @@ export default function Header() {
   }, [])
 
   const navItems = [
-    { label: 'Work', href: '#work' },
+    { label: 'Artists', href: '#artists' },
     { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
     { label: 'Contact', href: '#contact' },
@@ -25,20 +26,28 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-sm py-4 shadow-sm'
-            : 'bg-transparent py-6'
+            ? 'bg-white/95 backdrop-blur-sm py-3 shadow-sm'
+            : 'bg-transparent py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link
-              href="/"
-              className={`font-playfair text-2xl transition-colors ${
-                isScrolled ? 'text-zinc-900' : 'text-white'
-              }`}
-            >
-              Jason Perez
+            <Link href="/" className="flex items-center gap-3">
+              <Image
+                src="/images/logo-jpa.png"
+                alt="Jason Perez Art"
+                width={40}
+                height={45}
+                className={`transition-opacity ${isScrolled ? 'opacity-100' : 'opacity-90 brightness-0 invert'}`}
+              />
+              <span
+                className={`font-playfair text-xl hidden sm:block transition-colors ${
+                  isScrolled ? 'text-zinc-900' : 'text-white'
+                }`}
+              >
+                Jason Perez Art
+              </span>
             </Link>
 
             {/* Desktop Nav */}

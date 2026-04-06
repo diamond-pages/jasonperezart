@@ -1,12 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function Contact() {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
-    projectType: '',
+    inquiryType: '',
     message: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -26,17 +27,26 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left - Info */}
           <div>
+            {/* Logo */}
+            <div className="mb-8">
+              <Image
+                src="/images/logo-jpa.png"
+                alt="Jason Perez Art Collective"
+                width={120}
+                height={135}
+                className="opacity-90"
+              />
+            </div>
+
             <p className="text-sm tracking-[0.2em] uppercase text-zinc-400 mb-3">
               Contact
             </p>
             <h2 className="font-playfair text-4xl md:text-5xl text-zinc-900 mb-6">
-              Let&apos;s Create
-              <br />
-              <em className="italic text-zinc-500">Together</em>
+              Let&apos;s Connect
             </h2>
             <p className="text-lg text-zinc-600 leading-relaxed mb-12 max-w-md">
-              Have a project in mind? I&apos;d love to hear about it. 
-              Every great piece starts with a conversation.
+              Whether you&apos;re a collector looking for the perfect piece or an 
+              artist seeking representation, we&apos;d love to hear from you.
             </p>
 
             {/* Contact Details */}
@@ -46,18 +56,29 @@ export default function Contact() {
                   Email
                 </p>
                 <a
-                  href="mailto:hello@jasonperezart.com"
+                  href="mailto:jasonperezart@gmail.com"
                   className="text-xl text-zinc-900 hover:text-zinc-600 transition-colors"
                 >
-                  hello@jasonperezart.com
+                  jasonperezart@gmail.com
                 </a>
               </div>
               <div>
                 <p className="text-sm text-zinc-400 uppercase tracking-wider mb-1">
-                  Studio
+                  Phone
+                </p>
+                <a
+                  href="tel:+17868485442"
+                  className="text-xl text-zinc-900 hover:text-zinc-600 transition-colors"
+                >
+                  786-848-5442
+                </a>
+              </div>
+              <div>
+                <p className="text-sm text-zinc-400 uppercase tracking-wider mb-1">
+                  Locations
                 </p>
                 <p className="text-xl text-zinc-900">
-                  Miami, Florida
+                  Miami, FL &amp; New York
                 </p>
               </div>
               <div>
@@ -65,15 +86,14 @@ export default function Contact() {
                   Follow
                 </p>
                 <div className="flex gap-6 mt-2">
-                  {['Instagram', 'Behance'].map((social) => (
-                    <a
-                      key={social}
-                      href="#"
-                      className="text-zinc-600 hover:text-zinc-900 transition-colors"
-                    >
-                      {social}
-                    </a>
-                  ))}
+                  <a
+                    href="https://www.instagram.com/jasonperezartcollective/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-zinc-600 hover:text-zinc-900 transition-colors"
+                  >
+                    Instagram
+                  </a>
                 </div>
               </div>
             </div>
@@ -90,7 +110,7 @@ export default function Contact() {
                 </div>
                 <h3 className="font-playfair text-3xl text-zinc-900 mb-3">Message Sent</h3>
                 <p className="text-zinc-600">
-                  Thank you for reaching out. I&apos;ll be in touch soon.
+                  Thank you for reaching out. We&apos;ll be in touch soon.
                 </p>
               </div>
             ) : (
@@ -126,17 +146,18 @@ export default function Contact() {
 
                 <div>
                   <label className="text-sm text-zinc-400 uppercase tracking-wider block mb-2">
-                    Project Type
+                    I am a...
                   </label>
                   <select
-                    value={formState.projectType}
-                    onChange={(e) => setFormState({ ...formState, projectType: e.target.value })}
+                    value={formState.inquiryType}
+                    onChange={(e) => setFormState({ ...formState, inquiryType: e.target.value })}
                     className="w-full bg-transparent border-b-2 border-zinc-200 py-3 text-zinc-900 focus:border-zinc-900 focus:outline-none transition-colors cursor-pointer"
                   >
-                    <option value="">Select project type</option>
-                    <option value="mural">Mural</option>
-                    <option value="residential">Residential</option>
-                    <option value="fine-art">Fine Art / Commission</option>
+                    <option value="">Select one</option>
+                    <option value="collector">Collector / Buyer</option>
+                    <option value="artist">Artist seeking representation</option>
+                    <option value="venue">Gallery / Venue</option>
+                    <option value="press">Press / Media</option>
                     <option value="other">Other</option>
                   </select>
                 </div>
@@ -151,7 +172,7 @@ export default function Contact() {
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                     className="w-full bg-transparent border-b-2 border-zinc-200 py-3 text-zinc-900 focus:border-zinc-900 focus:outline-none transition-colors resize-none"
-                    placeholder="Tell me about your project..."
+                    placeholder="Tell us about yourself and what you're looking for..."
                   />
                 </div>
 

@@ -2,21 +2,21 @@ export default function Services() {
   const services = [
     {
       number: '01',
-      title: 'Murals',
-      description: 'Large-scale wall art for commercial spaces, businesses, and public installations. Weather-resistant and built to last.',
-      features: ['Site Assessment', 'Custom Design', 'Professional Installation'],
+      title: 'Artist Representation',
+      description: 'We represent over 40 talented artists from across the United States and internationally. Pop art, street art, contemporary, and fine art — we showcase creative genius in avant-garde galleries.',
+      features: ['Portfolio Development', 'Exhibition Placement', 'Career Strategy'],
     },
     {
       number: '02',
-      title: 'Residential',
-      description: 'Transform your home with custom artwork. From accent walls to full room installations, bring your space to life.',
-      features: ['In-Home Consultation', 'Multiple Concepts', 'White Glove Service'],
+      title: 'Art Brokerage',
+      description: 'Professional art brokerage services connecting collectors with exceptional works. Jason can deliver a piece directly to you or help you discover the perfect addition to your collection.',
+      features: ['Direct Sales', 'Private Viewings', 'Collection Consulting'],
     },
     {
       number: '03',
-      title: 'Fine Art',
-      description: 'Original canvas pieces and commissions for collectors. Each work is a one-of-a-kind creation.',
-      features: ['Original Works', 'Limited Editions', 'Commissions Available'],
+      title: 'Events & Exhibitions',
+      description: 'Feature your artwork at the most important aesthetic networking events in the United States. From Art Basel to Red Dot Miami, we create unforgettable art experiences.',
+      features: ['Art Basel Miami', 'Spectrum Miami', 'Red Dot Miami'],
     },
   ]
 
@@ -29,7 +29,7 @@ export default function Services() {
             Services
           </p>
           <h2 className="font-playfair text-4xl md:text-5xl text-zinc-900">
-            What I Offer
+            What We Offer
           </h2>
         </div>
 
@@ -65,13 +65,33 @@ export default function Services() {
           ))}
         </div>
 
+        {/* Venues */}
+        <div className="mt-20 pt-16 border-t border-zinc-200">
+          <h3 className="font-playfair text-2xl text-zinc-900 text-center mb-8">
+            Find Our Artists At
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {[
+              { name: 'Ampersand Studios', location: '31 NE 17th St, Miami' },
+              { name: 'Omni - The Hub', location: '1501 Biscayne Blvd' },
+              { name: 'Buro79', location: '125 NW 23rd St, Wynwood' },
+              { name: 'Rusty Pelican', location: 'Key Biscayne' },
+            ].map((venue) => (
+              <div key={venue.name} className="p-4">
+                <p className="font-medium text-zinc-900">{venue.name}</p>
+                <p className="text-sm text-zinc-500">{venue.location}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* CTA */}
         <div className="text-center mt-16">
           <a
             href="#contact"
             className="inline-flex items-center gap-2 text-white bg-zinc-900 px-6 py-3 hover:bg-zinc-800 transition-colors"
           >
-            Discuss Your Project
+            Submit Your Work
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
