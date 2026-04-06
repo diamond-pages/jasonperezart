@@ -12,7 +12,7 @@ export default function About() {
           <div className="relative">
             <div className="aspect-[4/5] relative overflow-hidden">
               <Image
-                src="https://static.wixstatic.com/media/868e3a_48e0f04189364edab901255b9bef9739~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_85/868e3a_48e0f04189364edab901255b9bef9739~mv2.jpg"
+                src="/images/gallery/artwork-2.jpg"
                 alt="Jason Perez"
                 fill
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-700"

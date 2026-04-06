@@ -7,25 +7,25 @@ const featuredArtists = [
     name: 'Jason Skeldon',
     style: 'Fire Art / Non-Traditional',
     description: 'Non-traditional artist working with fire, spray paints, acrylics, and resins. Art style influenced by pop culture and current events.',
-    image: 'https://static.wixstatic.com/media/868e3a_b6eedeb58cf4496bbe223ae730408808~mv2.jpg/v1/fill/w_600,h_600,al_c,q_85/868e3a_b6eedeb58cf4496bbe223ae730408808~mv2.jpg',
+    image: '/images/gallery/hero.jpg',
   },
   {
     name: 'Linda Himeur',
     style: 'Crystal Art',
     description: 'Fine artist with a passion for shine and Swarovski crystals, placing tens of thousands by hand with tweezers.',
-    image: 'https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_600,h_600,al_c,q_90/01c3aff52f2a4dffa526d7a9843d46ea.png',
+    image: '/images/gallery/artwork-3.png',
   },
   {
     name: 'Cody Parker',
     style: 'Optical Illusion',
     description: 'Creates images that change depending on viewing distance — six to twelve feet to capture the full effect.',
-    image: 'https://static.wixstatic.com/media/868e3a_48e0f04189364edab901255b9bef9739~mv2.jpg/v1/fill/w_600,h_600,al_c,q_85/868e3a_48e0f04189364edab901255b9bef9739~mv2.jpg',
+    image: '/images/gallery/artwork-2.jpg',
   },
   {
     name: 'Captain Casual',
     style: 'Pop Art',
     description: 'Bold pop art that captures the energy of contemporary culture with vibrant colors and playful imagery.',
-    image: 'https://static.wixstatic.com/media/868e3a_fd1ed7dc1bef4c30a59684eea6faa75e~mv2.jpg/v1/fill/w_600,h_600,al_c,q_85/868e3a_fd1ed7dc1bef4c30a59684eea6faa75e~mv2.jpg',
+    image: '/images/gallery/artwork-1.jpg',
   },
 ]
 
