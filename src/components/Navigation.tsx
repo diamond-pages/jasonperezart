@@ -2,108 +2,95 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#services', label: 'Services' },
-  { href: '#artists', label: 'Artists' },
-  { href: '#contact', label: 'Contact' },
+const navItems = [
+  { label: 'Work', href: '#work' },
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export default function Navigation() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 100);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-[#1a1a1a]/95 backdrop-blur-md py-4 shadow-lg shadow-black/20'
-          : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between">
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? 'bg-[var(--ink)]/90 backdrop-blur-sm py-4'
+            : 'bg-transparent py-6 lg:py-8'
+        }`}
+      >
+        <div className="container-xl px-6 lg:px-12 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="relative group">
-            <div className="relative w-16 h-16 transition-transform duration-300 group-hover:scale-105">
-              <Image
-                src="https://static.wixstatic.com/media/59ac04_2d434f32e026433ea3fa22b8a3b82949~mv2.png/v1/fill/w_202,h_228,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo.png"
-                alt="Jason Perez Art"
-                fill
-                className="object-contain"
-              />
-            </div>
+          <Link 
+            href="/" 
+            className="font-display text-xl lg:text-2xl tracking-tight hover:text-[var(--terracotta)] transition-colors"
+          >
+            Jason Perez
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-10">
-            {navLinks.map((link) => (
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-10">
+            {navItems.map((item) => (
               <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm tracking-[0.2em] uppercase text-[#F5F3EE]/80 hover:text-[#C9A55C] transition-colors duration-300 relative group"
+                key={item.href}
+                href={item.href}
+                className="text-sm tracking-[0.15em] uppercase text-[var(--paper)]/70 hover:text-[var(--paper)] transition-colors link-underline"
               >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#C9A55C] transition-all duration-300 group-hover:w-full" />
+                {item.label}
               </Link>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Toggle */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden relative w-8 h-8 flex flex-col justify-center items-center"
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+            className="md:hidden w-8 h-8 flex flex-col justify-center items-center gap-1.5"
+            aria-label="Toggle menu"
           >
             <span
-              className={`w-6 h-px bg-[#C9A55C] transition-all duration-300 ${
-                mobileMenuOpen ? 'rotate-45 translate-y-0.5' : '-translate-y-1'
+              className={`w-6 h-px bg-[var(--paper)] transition-all duration-300 ${
+                isMobileOpen ? 'rotate-45 translate-y-1' : ''
               }`}
             />
             <span
-              className={`w-6 h-px bg-[#C9A55C] transition-all duration-300 ${
-                mobileMenuOpen ? 'opacity-0' : 'opacity-100'
-              }`}
-            />
-            <span
-              className={`w-6 h-px bg-[#C9A55C] transition-all duration-300 ${
-                mobileMenuOpen ? '-rotate-45 -translate-y-0.5' : 'translate-y-1'
+              className={`w-6 h-px bg-[var(--paper)] transition-all duration-300 ${
+                isMobileOpen ? '-rotate-45 -translate-y-0.5' : ''
               }`}
             />
           </button>
         </div>
+      </nav>
 
-        {/* Mobile Menu */}
-        <div
-          className={`md:hidden absolute left-0 right-0 top-full bg-[#1a1a1a]/98 backdrop-blur-md transition-all duration-500 ${
-            mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-          }`}
-        >
-          <div className="py-8 px-6 space-y-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-lg tracking-[0.15em] uppercase text-[#F5F3EE]/80 hover:text-[#C9A55C] transition-colors duration-300"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+      {/* Mobile Menu */}
+      <div
+        className={`fixed inset-0 z-40 bg-[var(--ink)] transition-all duration-500 md:hidden ${
+          isMobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
+      >
+        <div className="h-full flex flex-col justify-center items-center gap-8">
+          {navItems.map((item, i) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setIsMobileOpen(false)}
+              className="font-display text-4xl text-[var(--paper)] hover:text-[var(--terracotta)] transition-colors"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
-    </nav>
+    </>
   );
 }

@@ -7,85 +7,90 @@ export default function Hero() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setLoaded(true);
+    const timer = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+    <section className="relative min-h-screen flex items-end pb-16 lg:pb-24 overflow-hidden">
+      {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://static.wixstatic.com/media/868e3a_fd1ed7dc1bef4c30a59684eea6faa75e~mv2.jpg/v1/fill/w_2500,h_6059,al_c/868e3a_fd1ed7dc1bef4c30a59684eea6faa75e~mv2.jpg"
-          alt="Featured Artwork"
+          src="https://static.wixstatic.com/media/868e3a_fd1ed7dc1bef4c30a59684eea6faa75e~mv2.jpg/v1/fill/w_1920,h_1280,al_c,q_85/868e3a_fd1ed7dc1bef4c30a59684eea6faa75e~mv2.jpg"
+          alt="Mural artwork by Jason Perez"
           fill
-          className="object-cover object-center scale-110"
           priority
+          className="object-cover"
+          sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/70 via-[#1a1a1a]/40 to-[#1a1a1a]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a]/60 via-transparent to-[#1a1a1a]/60" />
+        {/* Gradient overlays for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--ink)] via-[var(--ink)]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)]/60 via-transparent to-[var(--ink)]/40" />
       </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute top-1/4 left-10 w-px h-32 bg-gradient-to-b from-transparent via-[#C9A55C] to-transparent opacity-50" />
-      <div className="absolute top-1/3 right-10 w-px h-48 bg-gradient-to-b from-transparent via-[#C9A55C] to-transparent opacity-50" />
-      <div className="absolute bottom-1/4 left-20 w-24 h-px bg-gradient-to-r from-transparent via-[#C9A55C] to-transparent opacity-50" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        <div
-          className={`transition-all duration-1000 delay-300 ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <p className="text-[#C9A55C] tracking-[0.4em] uppercase text-sm mb-6 font-light">
-            Fine Art & Murals
+      <div className="relative z-10 container-xl px-6 lg:px-12 w-full">
+        <div className="max-w-4xl">
+          {/* Overline */}
+          <p
+            className={`text-[var(--text-sm)] tracking-[0.3em] uppercase text-[var(--stone)] mb-6 transition-all duration-700 ${
+              loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            Muralist &amp; Fine Artist — Miami, FL
           </p>
+
+          {/* Main headline */}
+          <h1
+            className={`font-display text-[var(--text-display)] text-[var(--paper)] mb-8 transition-all duration-1000 delay-200 ${
+              loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            Art that
+            <br />
+            <em className="text-[var(--terracotta)]">transforms</em>
+            <br />
+            spaces
+          </h1>
+
+          {/* Subtitle */}
+          <p
+            className={`text-[var(--text-lg)] text-[var(--paper)]/70 max-w-lg leading-relaxed mb-10 transition-all duration-1000 delay-400 ${
+              loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            Large-scale murals and fine art that tell stories, 
+            evoke emotion, and create unforgettable environments.
+          </p>
+
+          {/* CTA */}
+          <div
+            className={`flex flex-wrap gap-4 transition-all duration-1000 delay-600 ${
+              loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <a href="#work" className="btn-primary">
+              View Work
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <a href="#contact" className="btn-outline">
+              Start a Project
+            </a>
+          </div>
         </div>
 
-        <h1
-          className={`font-['Cormorant_Garamond'] text-6xl md:text-8xl lg:text-9xl font-light tracking-wide mb-8 transition-all duration-1000 delay-500 ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <span className="text-gold-gradient">Jason Perez</span>
-          <br />
-          <span className="text-[#F5F3EE]/90 text-4xl md:text-5xl lg:text-6xl">Art</span>
-        </h1>
-
-        <p
-          className={`text-[#F5F3EE]/70 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed transition-all duration-1000 delay-700 ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          Transforming spaces through the power of visual storytelling. 
-          Creating immersive experiences that captivate and inspire.
-        </p>
-
+        {/* Scroll indicator */}
         <div
-          className={`flex flex-col sm:flex-row items-center justify-center gap-6 transition-all duration-1000 delay-900 ${
-            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`absolute bottom-8 right-6 lg:right-12 hidden lg:flex flex-col items-center gap-3 transition-all duration-1000 delay-700 ${
+            loaded ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <a
-            href="#gallery"
-            className="btn-elegant px-10 py-4 border border-[#C9A55C] text-[#C9A55C] hover:bg-[#C9A55C] hover:text-[#1a1a1a] tracking-[0.2em] uppercase text-sm transition-all duration-300"
-          >
-            View Gallery
-          </a>
-          <a
-            href="#contact"
-            className="btn-elegant px-10 py-4 bg-[#C9A55C] text-[#1a1a1a] hover:bg-[#E8D5A3] tracking-[0.2em] uppercase text-sm transition-all duration-300"
-          >
-            Commission Work
-          </a>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float">
-        <div className="flex flex-col items-center gap-3">
-          <span className="text-[#C9A55C]/60 text-xs tracking-[0.3em] uppercase">Scroll</span>
-          <div className="w-px h-12 bg-gradient-to-b from-[#C9A55C] to-transparent" />
+          <span className="text-xs tracking-[0.2em] uppercase text-[var(--stone)] [writing-mode:vertical-rl]">
+            Scroll
+          </span>
+          <div className="w-px h-16 bg-gradient-to-b from-[var(--stone)] to-transparent" />
         </div>
       </div>
     </section>

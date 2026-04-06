@@ -3,6 +3,12 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
+const stats = [
+  { value: '15+', label: 'Years Experience' },
+  { value: '200+', label: 'Projects Completed' },
+  { value: '50+', label: 'Murals Installed' },
+];
+
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -10,17 +16,11 @@ export default function About() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
       { threshold: 0.2 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -28,84 +28,84 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative py-32 lg:py-40 overflow-hidden"
+      className="section-padding bg-[var(--paper)] text-[var(--ink)]"
     >
-      {/* Background texture */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A55C' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Image */}
+      <div className="container-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Image Column */}
           <div
-            className={`relative transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
+            className={`lg:col-span-5 transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
             }`}
           >
-            <div className="relative aspect-[4/5] overflow-hidden">
-              <Image
-                src="https://static.wixstatic.com/media/868e3a_48e0f04189364edab901255b9bef9739~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80,usm_0.66_1.00_0.01/868e3a_48e0f04189364edab901255b9bef9739~mv2.jpg"
-                alt="Jason Perez"
-                fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-              />
-              {/* Frame decoration */}
-              <div className="absolute inset-4 border border-[#C9A55C]/30 pointer-events-none" />
+            <div className="relative">
+              {/* Main image */}
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <Image
+                  src="https://static.wixstatic.com/media/868e3a_48e0f04189364edab901255b9bef9739~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_85/868e3a_48e0f04189364edab901255b9bef9739~mv2.jpg"
+                  alt="Jason Perez in studio"
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                />
+              </div>
+              {/* Decorative offset frame */}
+              <div className="absolute -bottom-4 -right-4 w-full h-full border border-[var(--terracotta)] -z-10" />
             </div>
-            {/* Floating accent */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 border border-[#C9A55C]/20" />
-            <div className="absolute -top-6 -left-6 w-24 h-24 border border-[#C9A55C]/20" />
           </div>
 
-          {/* Content */}
+          {/* Content Column */}
           <div
-            className={`transition-all duration-1000 delay-300 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
+            className={`lg:col-span-7 lg:pl-8 transition-all duration-1000 delay-300 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
             }`}
           >
-            <p className="text-[#C9A55C] tracking-[0.3em] uppercase text-sm mb-4">
-              The Artist
-            </p>
-            <h2 className="font-['Cormorant_Garamond'] text-5xl lg:text-6xl font-light mb-8 text-[#F5F3EE]">
-              About <span className="italic text-[#C9A55C]">Jason</span>
+            <span className="text-[var(--text-xs)] tracking-[0.3em] uppercase text-[var(--stone)] block mb-4">
+              About the Artist
+            </span>
+
+            <h2 className="font-display text-[var(--text-2xl)] mb-8 text-balance">
+              Creating visual narratives that 
+              <em className="text-[var(--terracotta)]"> resonate</em>
             </h2>
-            
-            <div className="space-y-6 text-[#F5F3EE]/70 text-lg leading-relaxed">
+
+            <div className="space-y-6 text-[var(--text-base)] text-[var(--ink)]/80 leading-relaxed">
               <p>
-                Jason Perez is a Miami-based artist whose work transcends traditional boundaries, 
-                blending fine art techniques with contemporary urban aesthetics. His journey began 
-                on the streets, where he discovered the transformative power of public art.
+                Jason Perez is a Miami-based artist whose work bridges the gap between 
+                fine art and public installations. With over fifteen years of experience, 
+                he has developed a distinctive visual language that combines bold color, 
+                intricate detail, and emotional depth.
               </p>
               <p>
-                Today, his murals grace buildings across South Florida, while his studio pieces 
-                find homes in private collections worldwide. Each creation tells a story—a visual 
-                narrative that speaks to the soul and transforms ordinary spaces into extraordinary 
-                experiences.
+                His murals have transformed spaces across South Florida—from the 
+                vibrant walls of Wynwood to corporate headquarters, boutique hotels, 
+                and private residences. Each piece begins with a story: understanding 
+                the space, the people who inhabit it, and the emotions it should evoke.
               </p>
               <p>
-                With a philosophy rooted in authenticity and emotional connection, Jason approaches 
-                every project as an opportunity to create something meaningful, lasting, and 
-                profoundly beautiful.
+                Beyond public work, Jason creates intimate canvas pieces and accepts 
+                select commissions for collectors seeking something truly original.
               </p>
             </div>
 
-            <div className="mt-12 flex items-center gap-8">
-              <div className="text-center">
-                <p className="font-['Cormorant_Garamond'] text-4xl text-[#C9A55C]">15+</p>
-                <p className="text-[#F5F3EE]/50 text-sm tracking-wider uppercase">Years</p>
-              </div>
-              <div className="w-px h-16 bg-[#C9A55C]/30" />
-              <div className="text-center">
-                <p className="font-['Cormorant_Garamond'] text-4xl text-[#C9A55C]">200+</p>
-                <p className="text-[#F5F3EE]/50 text-sm tracking-wider uppercase">Projects</p>
-              </div>
-              <div className="w-px h-16 bg-[#C9A55C]/30" />
-              <div className="text-center">
-                <p className="font-['Cormorant_Garamond'] text-4xl text-[#C9A55C]">50+</p>
-                <p className="text-[#F5F3EE]/50 text-sm tracking-wider uppercase">Murals</p>
+            {/* Stats */}
+            <div className="mt-12 pt-8 border-t border-[var(--ink)]/10">
+              <div className="grid grid-cols-3 gap-8">
+                {stats.map((stat, i) => (
+                  <div key={stat.label}>
+                    <p
+                      className={`font-display text-[var(--text-2xl)] text-[var(--terracotta)] transition-all duration-700 ${
+                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                      }`}
+                      style={{ transitionDelay: `${600 + i * 100}ms` }}
+                    >
+                      {stat.value}
+                    </p>
+                    <p className="text-[var(--text-xs)] tracking-wider uppercase text-[var(--stone)] mt-1">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
