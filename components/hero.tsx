@@ -13,7 +13,7 @@ export default function Hero() {
           alt="Jason Perez Art Collective artwork"
           fill
           priority
-          className="object-cover object-bottom md:object-center"
+          className="object-cover object-[center_75%] md:object-center"
           sizes="100vw"
         />
         {/* Gradient overlay */}
